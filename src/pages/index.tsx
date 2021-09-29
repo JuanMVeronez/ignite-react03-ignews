@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, GetStaticProps } from 'next'
 
 import { SubscribeButton } from '../components/SubscribeButton'
 import { stripe } from '../services/stripe'
@@ -37,7 +37,7 @@ export default function Home({ product }: HomeProps) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   // esse ID eh pego dentro da pagina do produto no stripe
   const price = await stripe.prices.retrieve('price_1Jf0QvE7PJSyWQMSi97Ac1WQ', {
     expand: ['product'] // isso faz com que todas as infos do produto sejam repassadas dentro do objeto product
@@ -55,6 +55,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
       product
-    }
+    },
+    revalidate: 60 * 60 * 24 // 1day // a pagina eh gerada novamente a cada 1 dia
   }
 }
