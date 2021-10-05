@@ -7,8 +7,6 @@ import styles from './styles.module.scss'
 export function SignInButton() {
   const [session] = useSession()
   const iconColor = session ? '#04d361' : '#eba417'
-  
-  console.log(session)
 
   return session ? (
     <button
