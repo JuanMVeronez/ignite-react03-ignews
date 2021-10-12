@@ -25,7 +25,7 @@ export default function PostPreview({post}: PostPreviewProps) {
   const router = useRouter()
 
   useEffect(() => {
-    if (session.activeSubscription) {
+    if (session?.activeSubscription) {
       router.push(`/posts/${post.slug}`)
     }
   }, [session])
@@ -82,6 +82,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 
   return {
-    props: { post }
+    props: { post },
+    revalidate: 60 * 60 // 1hour
   }
 }
