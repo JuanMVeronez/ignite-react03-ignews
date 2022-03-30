@@ -8,7 +8,7 @@ import { RichText } from 'prismic-dom'
 import { getPrismicClient } from '../../services/prismic'
 import styles from './styles.module.scss'
 
-type Post = {
+export type Post = {
   slug: string;
   title: string;
   excerpt: string;
@@ -20,8 +20,6 @@ type PostsProps = {
 }
 
 export default function Posts({posts}: PostsProps) {
-  console.log(posts)
-
   return (
     <>
       <Head>

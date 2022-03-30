@@ -9,7 +9,7 @@ import { useSession } from 'next-auth/client'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-type Post = {
+export type FullPost = {
   slug: string;
   title: string;
   content: string;
@@ -17,7 +17,7 @@ type Post = {
 }
 
 type PostPreviewProps = {
-  post: Post;
+  post: FullPost;
 }
 
 export default function PostPreview({post}: PostPreviewProps) {
