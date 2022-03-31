@@ -5,7 +5,7 @@ import { RichText } from 'prismic-dom'
 import { getPrismicClient } from '../../../services/prismic'
 import styles from './styles.module.scss'
 
-type Post = {
+export type FullPost = {
   slug: string;
   title: string;
   content: string;
@@ -13,7 +13,7 @@ type Post = {
 }
 
 type PostProps = {
-  post: Post;
+  post: FullPost;
 }
 
 export default function Post({post}: PostProps) {
